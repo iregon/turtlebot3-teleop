@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { Ros, Topic, Message } from 'roslib';
 import { Observable } from 'rxjs';
+
 /**
  * The Welcome Page is a splash page that quickly describes the app,
  * and then directs the user to create an account or log in.
@@ -30,7 +31,7 @@ export class WelcomePage {
     return new Promise((resolve, reject) => {
       ros.on('connection', resolve);
       ros.on('error', reject);
-      
+
     })
   }
 
