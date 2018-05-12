@@ -12,7 +12,7 @@ import * as nippleJs from 'nipplejs';
   templateUrl: 'joystick.html'
 })
 export class JoystickComponent implements OnInit {
-  @Input() private position: { top: string, left: string } = { top: '80%', left: '50%' };
+  @Input() private position: { top: string, left: string } = { top: '50%', left: '50%' };
   @Input() private color: string = 'red';
 
   @Output('startMove') private startMove: EventEmitter<void> = new EventEmitter(true);
