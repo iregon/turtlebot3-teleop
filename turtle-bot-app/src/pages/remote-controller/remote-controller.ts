@@ -1,3 +1,4 @@
+import { ConfigService } from './../../providers/config/config.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -15,11 +16,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RemoteControllerPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private config: ConfigService) {
+      console.log(config.get('API_ENDPOINTS')['USER']);
+      
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RemoteControllerPage');
+  click() {
   }
+
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad RemoteControllerPage');
+  // }
 
 }

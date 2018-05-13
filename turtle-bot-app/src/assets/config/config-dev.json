@@ -1,0 +1,7 @@
+{
+  "debugging": true,
+
+  "API_ENDPOINTS": {
+    "USER": "api/v1/user"
+  }
+}

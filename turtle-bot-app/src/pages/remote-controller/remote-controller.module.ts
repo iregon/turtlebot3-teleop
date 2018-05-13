@@ -1,7 +1,8 @@
+import { DirectivesModule } from './../../directives/directives.module';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { RemoteControllerPage } from './remote-controller';
-import {ComponentsModule} from '../../components/components.module'
+import { ComponentsModule } from '../../components/components.module'
 
 @NgModule({
   declarations: [
@@ -9,10 +10,11 @@ import {ComponentsModule} from '../../components/components.module'
   ],
   imports: [
     ComponentsModule,
+    DirectivesModule,
     IonicPageModule.forChild(RemoteControllerPage),
   ],
-  exports:[
+  exports: [
     RemoteControllerPage
-  ]
+  ],
 })
-export class RemoteControllerPageModule {}
+export class RemoteControllerPageModule { }
