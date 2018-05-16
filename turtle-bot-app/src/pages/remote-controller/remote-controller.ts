@@ -1,4 +1,3 @@
-import { ConfigService } from './../../providers/config/config.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -18,10 +17,7 @@ export class RemoteControllerPage {
 
   constructor(
     private navCtrl: NavController,
-    private navParams: NavParams,
-    private config: ConfigService) {
-      console.log(config.get('API_ENDPOINTS')['USER']);
-      
+    private navParams: NavParams) {      
   }
 
   click() {

@@ -9,27 +9,23 @@ import { ENV } from '@app/env'
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-// declare const ENV: string;
 
 @Injectable()
 export class ConfigService {
   private readonly CONFIG_PATH = './assets/config';
   private settings: Map<string, object>;
-  // private env: string;
 
   constructor(private http: HttpClient) { }
 
   load(): Promise<{}>{
     return new Promise((resolve, reject) => {
-      // let env = environment.production ? 'production' : 'development';
-      console.log(ENV.mode)
       this.http.get(`${this.CONFIG_PATH}/config-${ENV.mode}.json`)
         .subscribe((data: Map<string, object>) => {
           this.settings = data;
           resolve(true);
         },
           (error: any) => {
-            return Observable.throw(error || 'No config file found');
+            reject(error || 'No config file found');
           });
     });
   }

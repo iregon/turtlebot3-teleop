@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { ConfigService } from '../../providers';
+import { Injectable, APP_INITIALIZER } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 /**
@@ -6,31 +7,32 @@ import { Storage } from '@ionic/storage';
  */
 @Injectable()
 export class Settings {
-  private SETTINGS_KEY: string = '_settings';
+  private SETTINGS_KEY: string = 'settings';
+  private settings: any;
 
-  settings: any;
-
-  _defaults: any;
-  _readyPromise: Promise<any>;
-
-  constructor(public storage: Storage, defaults: any) {
-    this._defaults = defaults;
-  }
+  constructor(
+    private storage: Storage,
+    private config: ConfigService
+  ) { }
 
   load() {
     return this.storage.get(this.SETTINGS_KEY).then((value) => {
       if (value) {
         this.settings = value;
-        return this._mergeDefaults(this._defaults);
+        return this.mergeDefaults(this.defaults());
       } else {
-        return this.setAll(this._defaults).then((val) => {
+        return this.setAll(this.defaults()).then((val) => {
           this.settings = val;
         })
       }
     });
   }
 
-  _mergeDefaults(defaults: any) {
+  private defaults() {
+    return this.config.getAll();
+  }
+
+  private mergeDefaults(defaults: any) {
     for (let k in defaults) {
       if (!(k in this.settings)) {
         this.settings[k] = defaults[k];
@@ -62,6 +64,10 @@ export class Settings {
       });
   }
 
+  getApi(key: string): string {
+    return this.settings["api"][key];
+  }
+
   save() {
     return this.setAll(this.settings);
   }
@@ -70,3 +76,19 @@ export class Settings {
     return this.settings;
   }
 }
+
+export function SettingsFactory(settings: Settings) {
+  return () => settings.load();
+}
+export function init() {
+  return {
+    provide: APP_INITIALIZER,
+    useFactory: SettingsFactory,
+    deps: [Settings],
+    multi: true
+  }
+}
+const SettingsModule = {
+  init: init
+}
+export { SettingsModule };
