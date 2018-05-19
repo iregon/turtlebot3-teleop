@@ -15,6 +15,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RemoteControllerPage {
 
+  readonly title = 'TurtleBot Controller';
+
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams) {      

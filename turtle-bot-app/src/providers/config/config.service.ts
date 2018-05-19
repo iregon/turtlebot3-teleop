@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, APP_INITIALIZER } from '@angular/core';
 import { ENV } from '@app/env'

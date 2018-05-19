@@ -1,3 +1,5 @@
+import { RemoteControllerPage } from './remote-controller/remote-controller';
+import { PageList } from './../models';
 // The page the user lands on after opening the app and without a session
 export const FirstRunPage = 'RemoteControllerPage';
 
@@ -9,3 +11,7 @@ export const MainPage = 'TabsPage';
 export const Tab1Root = 'ListMasterPage';
 export const Tab2Root = 'SearchPage';
 export const Tab3Root = 'SettingsPage';
+
+export const Pages: PageList = [
+    { title: 'TurtleBot Controller', component: RemoteControllerPage.name, icon: 'game-controller-a' }
+];

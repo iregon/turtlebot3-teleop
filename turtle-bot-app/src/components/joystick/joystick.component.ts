@@ -9,8 +9,8 @@ import * as nippleJs from 'nipplejs';
  * Components.
  */
 @Component({
-  selector: 'trtl-joystick',
-  templateUrl: 'joystick.html'
+  selector: 'app-joystick',
+  templateUrl: './joystick.html'
 })
 export class JoystickComponent implements OnInit {
   @ViewChild('joystick') private joystick: ElementRef;

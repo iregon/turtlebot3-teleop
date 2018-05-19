@@ -1,9 +1,9 @@
 import { JoystickMovement, TurtlebotMessage } from './../../models';
 import { Settings } from './../../providers/settings/settings';
-import { Observable, Subscription, Observer, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AlertService } from './../../providers/alert/alert.service';
 import { TurtlebotService } from './../../providers';
-import { Directive, HostListener, AfterViewInit, OnInit, OnDestroy, ElementRef, Inject, Injectable } from '@angular/core';
+import { Directive, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { LoadingController, Loading } from 'ionic-angular';
 
 /**
@@ -23,7 +23,6 @@ export class RosRemoteDirective implements OnInit, OnDestroy {
   private loader: Loading;
   private timer: Subscription;
   private movement: JoystickMovement;
-  // private lastMovement: JoystickMovement;
 
   constructor(
     private settingService: Settings,
@@ -88,22 +87,6 @@ export class RosRemoteDirective implements OnInit, OnDestroy {
   private onDisconnect(event: any) {
     this.isConnected = false;
   }
-
-  // private createMessage(data: JoystickMovement): TurtlebotMessage {
-  //   console.log(data.angle.degree);
-
-  //   let speed = new SpeedStrategy(this.settingService).calculateSpeed(data.force);
-  //   let angle = new AngleStrategy().calculateAngle(data.angle.radian);
-
-  //   if (this.lastMovement == null) return new TurtlebotMessage({
-  //     linear: {
-  //       x: speed
-  //     },
-  //     angular: {
-  //       z: angle
-  //     }
-  //   });
-  // }
 
 }
 
