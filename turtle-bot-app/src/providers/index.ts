@@ -1,3 +1,4 @@
+export { AlertService } from './alert/alert.service';
 export { ConfigService } from './config/config.service';
 export { Api } from './api/api';
 export { Items } from '../mocks/providers/items';

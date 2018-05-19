@@ -1,3 +1,4 @@
+import { Observable, Observer } from 'rxjs';
 import { TurtlebotMessage } from './../../models/turtlebot-message';
 import { Settings } from './../../providers';
 import { Ros, Topic } from 'roslib';
@@ -13,15 +14,16 @@ export class TurtlebotService {
         private settingsService: Settings
     ) {
         this.ros = new Ros(null);
-        this.settingsService.getValue("turtlebot")
-          .then((settings) => this.settings = settings);
+        this.settings = this.settingsService.getValue("turtlebot");
     }
 
-    connect() {
+    connect(): Promise<void> {
         return new Promise((resolve, reject) => {
           this.ros.on('connection', resolve);
           this.ros.on('error', reject);
-          this.ros.connect(this.settings.url);
+          console.log(this.settings.url);
+          
+          this.ros.connect(`ws://${this.settings.url}`);
         });
       }
     
@@ -32,6 +34,12 @@ export class TurtlebotService {
       send(message: TurtlebotMessage) {
         this.ensureTopic();
         this.topic.publish(message);
+      }
+
+      onDisconnect(): Observable<any>{
+        return Observable.create((observer: Observer<any>) => {
+          this.ros.on('close', event => observer.next(event))
+        });
       }
     
       /** Ensure an instance of Topic is available */

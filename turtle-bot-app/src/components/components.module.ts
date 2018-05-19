@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { JoystickComponent } from './joystick/joystick';
-import { RemoteControllerComponent } from './remote-controller/remote-controller';
 @NgModule({
-	declarations: [JoystickComponent,
-    RemoteControllerComponent],
+	declarations: [JoystickComponent],
 	imports: [],
-	exports: [JoystickComponent,
-    RemoteControllerComponent]
+	exports: [JoystickComponent]
 })
 export class ComponentsModule {}

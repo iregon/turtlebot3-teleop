@@ -2,12 +2,15 @@
   "debugging": false,
 
   "api": {
-    "USER": "api/v1/user"
+    "user": "api/v1/user"
   },
-  
-  "turtlebot" : {
-    "url" : "192.168.146.129:9090",
-    "name" : "/turtle1/cmd_vel",
+
+  "turtlebot": {
+    "url": "192.168.146.128:9090",
+    "name": "/turtle1/cmd_vel",
     "messageType": "geometry_msgs/Twist"
-  }
+  },
+
+  "remoteInterval": 1000,
+  "maxSpeed": 1
 }

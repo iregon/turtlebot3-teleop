@@ -7,7 +7,7 @@ import { Storage } from '@ionic/storage';
  */
 @Injectable()
 export class Settings {
-  private SETTINGS_KEY: string = 'settings';
+  private readonly SETTINGS_KEY: string = 'settings';
   private settings: any;
 
   constructor(
@@ -19,7 +19,7 @@ export class Settings {
     return this.storage.get(this.SETTINGS_KEY).then((value) => {
       if (value) {
         this.settings = value;
-        return this.mergeDefaults(this.defaults());
+        return this.merge(this.defaults());
       } else {
         return this.setAll(this.defaults()).then((val) => {
           this.settings = val;
@@ -32,14 +32,14 @@ export class Settings {
     return this.config.getAll();
   }
 
-  private mergeDefaults(defaults: any) {
-    for (let k in defaults) {
-      if (!(k in this.settings)) {
-        this.settings[k] = defaults[k];
-      }
-    }
-    return this.setAll(this.settings);
-  }
+  // private mergeDefaults(defaults: any) {
+  //   for (let k in defaults) {
+  //     if (!(k in this.settings)) {
+  //       this.settings[k] = defaults[k];
+  //     }
+  //   }
+  //   return this.setAll(this.settings);
+  // }
 
   merge(settings: any) {
     for (let k in settings) {
@@ -58,10 +58,11 @@ export class Settings {
   }
 
   getValue(key: string) {
-    return this.storage.get(this.SETTINGS_KEY)
-      .then(settings => {
-        return settings[key];
-      });
+    return this.settings[key];
+    // return this.storage.get(this.SETTINGS_KEY)
+    //   .then(settings => {
+    //     return settings[key];
+    //   });
   }
 
   getApi(key: string): string {

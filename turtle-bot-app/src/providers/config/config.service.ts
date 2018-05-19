@@ -17,7 +17,7 @@ export class ConfigService {
 
   constructor(private http: HttpClient) { }
 
-  load(): Promise<{}>{
+  load(): Promise<{}>{    
     return new Promise((resolve, reject) => {
       this.http.get(`${this.CONFIG_PATH}/config-${ENV.mode}.json`)
         .subscribe((data: Map<string, object>) => {
