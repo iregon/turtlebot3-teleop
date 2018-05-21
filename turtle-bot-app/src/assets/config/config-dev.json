@@ -6,11 +6,24 @@
   },
 
   "turtlebot": {
-    "url": "192.168.146.128:9554090",
-    "name": "/turtle1/cmd_vel",
-    "messageType": "geometry_msgs/Twist"
+    "url": "pippotornesello.ddns.net:9090",
+    "remoteController": {
+      "name": "/turtle1/cmd_vel",
+      "messageType": "geometry_msgs/Twist"
+    },
+    "cam": {
+      "name": "/camera/rgb/image_raw/compressed",
+      "messageType": "sensor_msgs/CompressedImage"
+    }
   },
 
-  "remoteInterval": 1000,
-  "maxSpeed": 1
+  "timeInterval": 50,
+  "maxSpeed": 1,
+  "maxForce": 3,
+  "initialAngle": {
+    "degree": 0
+  },
+
+  "url": "192.168.146.128:9090 - NON USARE",
+  "cam": "http://pippotornesello.ddns.net:9091/stream?topic=/camera/rgb/image_raw&type=ros_compressed"
 }

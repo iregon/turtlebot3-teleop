@@ -5,21 +5,21 @@ import { Camera } from '@ionic-native/camera';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+// import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+// import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { Items } from '../mocks/providers/items';
-import { AlertService, ConfigService, Settings, User, Api } from '../providers';
+import { AlertService, ConfigService, Settings, User, Api, TurtlebotService } from '../providers';
 import { MyApp } from './app.component';
 import { ConfigModule } from '../providers/config/config.service';
 import { SettingsModule } from '../providers/settings/settings';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+// export function createTranslateLoader(http: HttpClient) {
+//   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+// }
 
 // export function provideSettings(storage: Storage) {
 //   /**
@@ -43,13 +43,13 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
+    // TranslateModule.forRoot({
+    //   loader: {
+    //     provide: TranslateLoader,
+    //     useFactory: (createTranslateLoader),
+    //     deps: [HttpClient]
+    //   }
+    // }),
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
   ],
@@ -71,7 +71,8 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ConfigService,
     ConfigModule.init(),
-    AlertService
+    AlertService,
+    TurtlebotService
   ]
 })
 export class AppModule { }

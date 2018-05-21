@@ -1,4 +1,4 @@
-export class JoystickMovement {
+export interface JoystickMovement {
     /** the identifier of the touch/mouse that triggered it*/
     identifier: number;
     /** absolute position of the center in pixels */
@@ -20,6 +20,4 @@ export class JoystickMovement {
     };
     /** the joystick instance that triggered the event */
     instance: any
-
-    constructor() { }
 }

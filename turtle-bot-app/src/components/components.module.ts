@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
-import { JoystickComponent } from './joystick/joystick.component';
+import { TurtlebotVideoComponent } from './turtlebot-video/turtlebot-video.component';
+import { TurtlebotRemoteControllerComponent } from './turtlebot-remote-controller/turtlebot-remote-controller.component';
 @NgModule({
 	declarations: [
-		JoystickComponent
+    TurtlebotVideoComponent,
+    TurtlebotRemoteControllerComponent
 	],
 	imports: [],
 	exports: [
-		JoystickComponent
+    TurtlebotVideoComponent,
+    TurtlebotRemoteControllerComponent
 	]
 })
 export class ComponentsModule { }
